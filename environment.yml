@@ -1,0 +1,17 @@
+# run: conda env create --file environment.yml
+name: cognitive
+dependencies:
+  - python == 3.12
+  - pip
+  - pip:
+    - matplotlib >= 3.10.0 # Checks to make sure your version is greater than that version
+    - numpy ~= 1.26.3 # Look for same major and minor version but dont care about the patch
+    - numba >= 0.60.0
+    - seaborn >= 0.13.2
+    - scipy >= 1.15.1
+    - ipython >= 8.26.0
+    - notebook >= 7.3.2
+    # Fixed pystan to have an operator
+    - pystan >= 3.10.0
+    # Could use tensorflow == 2.18.0 but this is not recommended
+    - tensorflow >= 2.18.0

@@ -1,6 +1,3 @@
-<<<<<<< HEAD
 This is Second commit.
 This is third Commit.
-=======
-sfdsf
->>>>>>> parent of e021632 (Commit 1 for merge conflict)
+

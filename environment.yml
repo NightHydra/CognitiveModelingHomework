@@ -1,8 +1,8 @@
 # run: conda env create --file environment.yml
-name: cognitive
+name: sample
 dependencies:
   - python == 3.12
-  - pip
+  - pip == 24.2
   - pip:
     - matplotlib >= 3.10.0 # Checks to make sure your version is greater than that version
     - numpy ~= 1.26.3 # Look for same major and minor version but dont care about the patch

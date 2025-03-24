@@ -62,7 +62,35 @@ def simulate_ddm(v, a, beta, tau, dt=1e-3, scale=1.0, max_time=10.):
 
 
 def simulate_diffusion_n(num_sims, v, a, beta, tau, dt=1e-3, scale=1.0, max_time=10.):
-    """Add a nice docstring."""
+    """
+    Simulates num_sims realizations of the diffusion process given
+    a set of parameters and a step size `dt`.
+
+    Parameters:
+    -----------
+    num_sims: float
+        The number of realzations to generate of the diffusion model
+    v     : float
+        The drift rate (rate of information uptake) for the diffusion model.
+    a     : float
+        The boundary separation (decision threshold) for the diffusion model.
+    beta  : float in [0, 1]
+        Relative starting point (prior option preferences) for the diffusion model
+    tau   :
+        Non-decision time (additive constant) for the diffusion model
+    dt    : float, optional (default: 1e-3 = 0.001)
+        The step size for the Euler algorithm.
+    scale : float, optional (default: 1.0)
+        The scale (sqrt(var)) of the Wiener process. Not considered
+        a parameter and typically fixed to either 1.0 or 0.1.
+    max_time: float, optional (default: 10.)
+        The maximum number of seconds before forced termination.
+
+    Returns:
+    --------
+    np.array - An array of tuples (x, c) where x is the response time and
+        c is a binary decision
+    """
 
     data = np.zeros((num_sims, 2))
     for n in range(num_sims):
@@ -71,7 +99,25 @@ def simulate_diffusion_n(num_sims, v, a, beta, tau, dt=1e-3, scale=1.0, max_time
 
 
 def visualize_ddm(data, figsize=(8, 6), hist_1_label='Correct responses', hist_2_label='Incorrect responses'):
-    """Add a nice docstring."""
+    """"
+    Simulates num_sims realizations of the diffusion process given
+    a set of parameters and a step size `dt`.
+
+    Parameters:
+    -----------
+    data        : np.ndarray
+        The data to be visualized
+    figsize     : float, optional (default: (8,6)
+        The size for the figure to be displayed
+    hist_1_label: str, optional (default: 'Correct responses')
+        The label for the first histogram to be displayed with
+    hist_2_label: str, optional (default: 'Incorrect responses')
+        The label for the second histogram to be displayed with
+    
+    Returns:
+    --------
+    Figure - A figure with both displayed histograms
+    """
     f, ax = plt.subplots(1, 1, figsize=figsize)
     sns.histplot(data[:, 0][data[:, 1] == 1], color='maroon', alpha=0.7, ax=ax, label=hist_1_label)
     sns.histplot(data[:, 0][data[:, 1] == 0], color='gray', ax=ax, label=hist_2_label)
